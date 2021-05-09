@@ -1,10 +1,14 @@
+// the material package contains all the interface resources
 import 'package:flutter/material.dart';
+
+// just for some of the colo(u)rs that we're using
 import 'package:flutter/painting.dart';
 
-void main() {
-  runApp(InterfaceApp());
-}
+// main basically just runs the app
+void main() =>
+    runApp(InterfaceApp()); // creates our app as an object and runs it
 
+// the class that constructs our app
 class InterfaceApp extends StatelessWidget {
   final List<String> _daysOfWeek = [
     "Monday",
@@ -28,6 +32,17 @@ class InterfaceApp extends StatelessWidget {
     "This is yet another text",
     "More text!!!!!!",
     "So much more text",
+    "This is some more text even wow so much text",
+    "More text",
+    "So much more text",
+    "EHDUFGSDIJKFHSDJKFHSDAJKFDHF",
+    "SKLFHDSJKFHSDJKLFH",
+    "DKFJDKFJDKJ",
+    "sjkdfhsdjfhdsjfhs",
+    "dfkdjkfdkfdkfjdf",
+    "dfkjdkfjdkjdfd",
+    "dfkljdfksdjfksdjfs",
+    "fkdklfkdlfkd",
   ];
 
   Widget build(BuildContext context) {
@@ -38,48 +53,50 @@ class InterfaceApp extends StatelessWidget {
         appBar: AppBar(
           title: Text("Today is an interesting Day!"),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Container(
-            width: double.infinity,
-            child: Column(
-              children: [
-                Text(
-                  "Today is: ${_daysOfWeek[_todayIndex]}",
-                  style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.indigoAccent,
-                  ),
+        body: ListView(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(5.0),
+              alignment: Alignment.center,
+              child: Text(
+                "Today is: ${_daysOfWeek[_todayIndex]}",
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.indigoAccent,
                 ),
-                Icon(
-                  Icons.account_balance_wallet,
-                  size: 50,
-                  color: Colors.pink,
-                ),
-                ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: _things.length,
-                  padding: const EdgeInsets.all(5.0),
-                  itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      height: 50,
-                      child: Row(
-                        children: [
-                          Text("${_things[index]}"),
-                          Icon(
-                            Icons.add_call,
-                            size: 20,
-                            color: Colors.amber,
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                )
-              ],
+              ),
             ),
-          ),
+            Icon(
+              Icons.account_balance_wallet,
+              size: 50,
+              color: Colors.pink,
+            ),
+            ListView.builder(
+              physics: const BouncingScrollPhysics(
+                  parent: AlwaysScrollableScrollPhysics()),
+              shrinkWrap: true,
+              itemCount: _things.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Center(
+                  heightFactor: 2.0,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text("${_things[index]}"),
+                      SizedBox(width: 5),
+                      Icon(
+                        Icons.add_call,
+                        size: 20,
+                        color: Colors.amber,
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+          ],
         ),
       ),
     );
