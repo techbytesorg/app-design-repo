@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'data.dart';
-import 'mainApp.dart';
+import 'main_app.dart';
 
 // main basically just runs the app
 // creates our app as an object and runs it

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 // just for some of the colo(u)rs that we're using
 import 'package:flutter/painting.dart';
 
+import 'button_view.dart';
+
 // This is where the main App is defined
 // the class that constructs our app
 class InterfaceApp extends StatelessWidget {
@@ -40,6 +42,7 @@ class InterfaceApp extends StatelessWidget {
               size: 50,
               color: Colors.pink,
             ),
+            ButtonView(),
             ListView.builder(
               physics: const BouncingScrollPhysics(
                   parent: AlwaysScrollableScrollPhysics()),
