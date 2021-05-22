@@ -1,5 +1,6 @@
+import 'package:binary_adder/adder_view.dart';
 import 'package:flutter/material.dart';
-import 'data.dart';
+import 'package:flutter/painting.dart';
 
 class BinaryAdderApp extends StatelessWidget {
   @override
@@ -19,6 +20,7 @@ class BinaryAdderApp extends StatelessWidget {
         ),
         body: Container(
           width: double.infinity,
+          padding: const EdgeInsets.all(10.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -26,6 +28,8 @@ class BinaryAdderApp extends StatelessWidget {
               Text(
                 "Press the 2 buttons to increase the 2 values, then press “Add” to add them together!",
               ),
+              SizedBox(height: 10),
+              AdderView(),
             ],
           ),
         ),
