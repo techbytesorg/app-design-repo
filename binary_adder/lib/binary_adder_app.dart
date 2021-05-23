@@ -1,13 +1,13 @@
-import 'package:binary_adder/adder_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'adder_view.dart';
 
 class BinaryAdderApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.orange),
+      theme: ThemeData(primarySwatch: Colors.deepOrange),
       home: Scaffold(
         appBar: AppBar(
           title: Text(
@@ -20,13 +20,13 @@ class BinaryAdderApp extends StatelessWidget {
         ),
         body: Container(
           width: double.infinity,
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(15.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                "Press the 2 buttons to increase the 2 values, then press “Add” to add them together!",
+                "Press the 2 buttons to increase the 2 values, then press “+” to add them together!",
+                style: TextStyle(fontSize: 15),
               ),
               SizedBox(height: 10),
               AdderView(),

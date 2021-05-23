@@ -31,37 +31,83 @@ class _AdderViewState extends State<AdderView> {
     });
   }
 
+  void _reset_all() {
+    setState(() {
+      _num1 = 0;
+      _num2 = 0;
+      _sum12 = 0;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          children: [
-            Text(
-              "Num #1: $_num1",
-            ),
-            TextButton(
-              child: Text(
-                "Increment Num #1",
+    return Container(
+      width: double.infinity,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Num #1: ${_num1 < 8 ? binary_array[_num1] : "Overflow!"}",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
               ),
-              onPressed: _increNum1,
-            ),
-          ],
-        ),
-        Row(
-          children: [
-            Text(
-              "Num #2: $_num2",
-            ),
-            TextButton(
-              child: Text(
-                "Increment Num #2",
+              TextButton(
+                onPressed: _increNum1,
+                child: Text(
+                  "Increment Num #1",
+                ),
               ),
-              onPressed: _increNum2,
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Num #2: ${_num2 < 8 ? binary_array[_num2] : "Overflow!"}",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
+              ),
+              TextButton(
+                onPressed: _increNum2,
+                child: Text(
+                  "Increment Num #2",
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 15),
+          TextButton(
+            onPressed: _calSum12,
+            child: Icon(
+              Icons.add,
+              size: 45,
             ),
-          ],
-        ),
-      ],
+          ),
+          Text(
+            "Num #1 + Num #2 = ${_sum12 < 8 ? binary_array[_sum12] : "Overflow!"}",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
+          ),
+          SizedBox(height: 15),
+          TextButton(
+            onPressed: _reset_all,
+            child: Text("Reset All",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                )),
+          ),
+        ],
+      ),
     );
   }
 }

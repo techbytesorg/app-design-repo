@@ -8,7 +8,7 @@
 // 6 = 110 = 1*2^2 + 1*2^1 + 0*2^0
 // 7 = 111
 
-final List<String> binary = [
+final List<String> binary_array = [
   "000",
   "001",
   "010",
