@@ -18,3 +18,5 @@ final List<String> binary_array = [
   "110",
   "111",
 ];
+
+List<String> history = [];

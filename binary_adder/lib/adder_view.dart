@@ -19,15 +19,28 @@ class _AdderViewState extends State<AdderView> {
     });
   }
 
+  void _decreNum1() {
+    setState(() {
+      _num1--;
+    });
+  }
+
   void _increNum2() {
     setState(() {
       _num2++;
     });
   }
 
+  void _decreNum2() {
+    setState(() {
+      _num2--;
+    });
+  }
+
   void _calSum12() {
     setState(() {
       _sum12 = _num1 + _num2;
+      history.add("$_num1 + $_num2 = $_sum12"); // display binary & account for over/under flow in storing
     });
   }
 
@@ -50,7 +63,7 @@ class _AdderViewState extends State<AdderView> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "Num #1: ${_num1 < 8 ? binary_array[_num1] : "Overflow!"}",
+                "Num #1: ${(_num1 <= 7 && _num1 >= 0) ? binary_array[_num1] : "Over/Underflow!"}",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
@@ -58,8 +71,14 @@ class _AdderViewState extends State<AdderView> {
               ),
               TextButton(
                 onPressed: _increNum1,
-                child: Text(
-                  "Increment Num #1",
+                child: Icon(
+                  Icons.arrow_upward,
+                ),
+              ),
+              TextButton(
+                onPressed: _decreNum1,
+                child: Icon(
+                  Icons.arrow_downward,
                 ),
               ),
             ],
@@ -68,7 +87,7 @@ class _AdderViewState extends State<AdderView> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "Num #2: ${_num2 < 8 ? binary_array[_num2] : "Overflow!"}",
+                "Num #2: ${(_num2 <= 7 && _num2 >= 0) ? binary_array[_num2] : "Over/Underflow!"}",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
@@ -76,8 +95,14 @@ class _AdderViewState extends State<AdderView> {
               ),
               TextButton(
                 onPressed: _increNum2,
-                child: Text(
-                  "Increment Num #2",
+                child: Icon(
+                  Icons.arrow_upward,
+                ),
+              ),
+              TextButton(
+                onPressed: _decreNum2,
+                child: Icon(
+                  Icons.arrow_downward,
                 ),
               ),
             ],
@@ -106,6 +131,19 @@ class _AdderViewState extends State<AdderView> {
                   fontSize: 20,
                 )),
           ),
+          SizedBox(height: 10),
+          ListView.builder(
+              shrinkWrap: true,
+              itemCount: history.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Center(
+                  heightFactor: 2.0,
+                  child: Text(
+                    "${history[index]}",
+                    style: TextStyle(fontSize: 15),
+                  ),
+                );
+              }),
         ],
       ),
     );

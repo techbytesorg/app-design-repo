@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter/widgets.dart';
 import 'adder_view.dart';
+import 'data.dart';
 
 class BinaryAdderApp extends StatelessWidget {
   @override
