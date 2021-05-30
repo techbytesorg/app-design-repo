@@ -13,34 +13,61 @@ class _AdderViewState extends State<AdderView> {
   int _num2 = 0;
   int _sum12 = 0;
 
+  String _num1Desc = "";
+  String _num2Desc = "";
+  String _sum12Desc = "";
+
   void _increNum1() {
     setState(() {
-      _num1++;
+      if (_num1 < 8) {
+        _num1++;
+      }
+      _num1Desc = (_num1 > 7) ? "Overflow!" : "";
     });
   }
 
   void _decreNum1() {
     setState(() {
-      _num1--;
+      if (_num1 > -1) {
+        _num1--;
+      }
+      _num1Desc = (_num1 < 0) ? "Underflow!" : "";
     });
   }
 
   void _increNum2() {
     setState(() {
-      _num2++;
+      if (_num2 < 8) {
+        _num2++;
+      }
+      _num2Desc = (_num2 > 7) ? "Overflow!" : "";
     });
   }
 
   void _decreNum2() {
     setState(() {
-      _num2--;
+      if (_num2 > -1) {
+        _num2--;
+      }
+      _num2Desc = (_num2 < 0) ? "Underflow!" : "";
     });
   }
 
   void _calSum12() {
     setState(() {
       _sum12 = _num1 + _num2;
-      history.add("$_num1 + $_num2 = $_sum12"); // display binary & account for over/under flow in storing
+      if ((_num1 >= 0 && _num1 <= 7) && (_num2 >= 0 && _num2 <= 7)) {
+        _sum12Desc = (_sum12 > 7) ? "Overflow!" : "";
+
+        history.add("${binary_array[_num1]} + ${binary_array[_num2]} = "
+            "${(_sum12 <= 7) ? binary_array[_sum12] : _sum12Desc}");
+      } else {
+        _sum12Desc = "Imprecise Sum";
+
+        history.add(
+            "${(_num1 >= 0 && _num1 <= 7) ? binary_array[_num1] : _num1Desc} + "
+            "${(_num2 >= 0 && _num2 <= 7) ? binary_array[_num2] : _num2Desc} = $_sum12Desc");
+      }
     });
   }
 
@@ -49,6 +76,8 @@ class _AdderViewState extends State<AdderView> {
       _num1 = 0;
       _num2 = 0;
       _sum12 = 0;
+      _num1Desc = "";
+      _num2Desc = "";
     });
   }
 
@@ -63,7 +92,7 @@ class _AdderViewState extends State<AdderView> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "Num #1: ${(_num1 <= 7 && _num1 >= 0) ? binary_array[_num1] : "Over/Underflow!"}",
+                "Num #1: ${(_num1 <= 7 && _num1 >= 0) ? binary_array[_num1] : _num1Desc}",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
@@ -87,7 +116,7 @@ class _AdderViewState extends State<AdderView> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "Num #2: ${(_num2 <= 7 && _num2 >= 0) ? binary_array[_num2] : "Over/Underflow!"}",
+                "Num #2: ${(_num2 <= 7 && _num2 >= 0) ? binary_array[_num2] : _num2Desc}",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
@@ -116,7 +145,7 @@ class _AdderViewState extends State<AdderView> {
             ),
           ),
           Text(
-            "Num #1 + Num #2 = ${_sum12 < 8 ? binary_array[_sum12] : "Overflow!"}",
+            "Num #1 + Num #2 = ${(_sum12 >= 0 && _sum12 <= 7) ? binary_array[_sum12] : _sum12Desc}",
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 20,
