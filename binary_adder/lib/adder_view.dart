@@ -59,14 +59,17 @@ class _AdderViewState extends State<AdderView> {
       if ((_num1 >= 0 && _num1 <= 7) && (_num2 >= 0 && _num2 <= 7)) {
         _sum12Desc = (_sum12 > 7) ? "Overflow!" : "";
 
-        history.add("${binary_array[_num1]} + ${binary_array[_num2]} = "
+        history.insert(0, "${binary_array[_num1]} + ${binary_array[_num2]} = "
             "${(_sum12 <= 7) ? binary_array[_sum12] : _sum12Desc}");
       } else {
         _sum12Desc = "Imprecise Sum";
 
-        history.add(
-            "${(_num1 >= 0 && _num1 <= 7) ? binary_array[_num1] : _num1Desc} + "
+        history.insert(0, "${(_num1 >= 0 && _num1 <= 7) ? binary_array[_num1] : _num1Desc} + "
             "${(_num2 >= 0 && _num2 <= 7) ? binary_array[_num2] : _num2Desc} = $_sum12Desc");
+      }
+
+      if (history.length > 8) {
+        history.removeLast();
       }
     });
   }
@@ -163,6 +166,7 @@ class _AdderViewState extends State<AdderView> {
           SizedBox(height: 10),
           ListView.builder(
               shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
               itemCount: history.length,
               itemBuilder: (BuildContext context, int index) {
                 return Center(
