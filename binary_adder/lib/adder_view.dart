@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'data.dart';
 
 class AdderView extends StatefulWidget {
@@ -59,12 +60,16 @@ class _AdderViewState extends State<AdderView> {
       if ((_num1 >= 0 && _num1 <= 7) && (_num2 >= 0 && _num2 <= 7)) {
         _sum12Desc = (_sum12 > 7) ? "Overflow!" : "";
 
-        history.insert(0, "${binary_array[_num1]} + ${binary_array[_num2]} = "
+        history.insert(
+            0,
+            "${binary_array[_num1]} + ${binary_array[_num2]} = "
             "${(_sum12 <= 7) ? binary_array[_sum12] : _sum12Desc}");
       } else {
         _sum12Desc = "Imprecise Sum";
 
-        history.insert(0, "${(_num1 >= 0 && _num1 <= 7) ? binary_array[_num1] : _num1Desc} + "
+        history.insert(
+            0,
+            "${(_num1 >= 0 && _num1 <= 7) ? binary_array[_num1] : _num1Desc} + "
             "${(_num2 >= 0 && _num2 <= 7) ? binary_array[_num2] : _num2Desc} = $_sum12Desc");
       }
 
@@ -94,11 +99,15 @@ class _AdderViewState extends State<AdderView> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                "Num #1: ${(_num1 <= 7 && _num1 >= 0) ? binary_array[_num1] : _num1Desc}",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
+              Container(
+                width: 180,
+                child: Text(
+                  "Num #1: ${(_num1 <= 7 && _num1 >= 0) ? binary_array[_num1] : _num1Desc}",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
               ),
               TextButton(
@@ -118,11 +127,15 @@ class _AdderViewState extends State<AdderView> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                "Num #2: ${(_num2 <= 7 && _num2 >= 0) ? binary_array[_num2] : _num2Desc}",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
+              Container(
+                width: 180,
+                child: Text(
+                  "Num #2: ${(_num2 <= 7 && _num2 >= 0) ? binary_array[_num2] : _num2Desc}",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
               ),
               TextButton(
