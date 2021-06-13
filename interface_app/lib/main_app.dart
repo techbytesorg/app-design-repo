@@ -20,13 +20,16 @@ class InterfaceApp extends StatelessWidget {
           appBar: AppBar(
             title: Text("This is an interesting Tab Bar!"),
           ),
-          bottomNavigationBar: TabBar(
-            labelColor: Colors.cyan,
-            unselectedLabelColor: Colors.teal,
-            tabs: [
-              Tab(icon: Icon(Icons.access_alarm)),
-              Tab(icon: Icon(Icons.add_a_photo)),
-            ],
+          bottomNavigationBar: ColoredBox(
+            color: Colors.black12,
+            child: TabBar(
+              labelColor: Colors.cyan,
+              unselectedLabelColor: Colors.teal,
+              tabs: [
+                Tab(icon: Icon(Icons.access_alarm)),
+                Tab(icon: Icon(Icons.add_a_photo)),
+              ],
+            ),
           ),
           body: TabBarView(
             children: [

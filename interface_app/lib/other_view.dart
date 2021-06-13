@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'another_view.dart';
 
 class OtherView extends StatelessWidget {
   @override
@@ -6,6 +7,12 @@ class OtherView extends StatelessWidget {
     return Column(
       children: [
         Text("Look this is another view!"),
+        TextButton(
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => AnotherView()));
+          },
+          child: Text("Goto another view with navigation!"),
+        ),
       ],
     );
   }
