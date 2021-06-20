@@ -9,7 +9,7 @@ class OtherView extends StatelessWidget {
         Text("Look this is another view!"),
         TextButton(
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => AnotherView()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => AnotherView("Hi this is a message")));
           },
           child: Text("Goto another view with navigation!"),
         ),

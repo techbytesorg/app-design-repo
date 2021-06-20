@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class AnotherView extends StatelessWidget {
+  final String _message;
+  
+  AnotherView(this._message);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold( // Having a scaffold here means that we automatically get a back button on the top
@@ -9,7 +13,7 @@ class AnotherView extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Text("Look this is another view!"),
+          Text("$_message"),
           // We CAN add this as a second back button in addition to the one at the top
           // TextButton(
           //   onPressed: () {

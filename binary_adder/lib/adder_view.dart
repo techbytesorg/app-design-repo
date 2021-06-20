@@ -178,18 +178,19 @@ class _AdderViewState extends State<AdderView> {
           ),
           SizedBox(height: 10),
           ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: history.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Center(
-                  heightFactor: 2.0,
-                  child: Text(
-                    "${history[index]}",
-                    style: TextStyle(fontSize: 15),
-                  ),
-                );
-              }),
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: history.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Center(
+                heightFactor: 2.0,
+                child: Text(
+                  "${history[index]}",
+                  style: TextStyle(fontSize: 15),
+                ),
+              );
+            },
+          ),
         ],
       ),
     );
