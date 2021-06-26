@@ -10,8 +10,4 @@ class Note {
 }
 
 // List to hold all the Note objects
-List<Note> notes_storage = [
-  Note("HI", "HI THIs is the desc", DateTime.now()),
-  Note("HI", "HI THIs is the desc", DateTime.now()),
-  Note("HI", "HI THIs is the desc", DateTime.now()),
-];
+List<Note> notes_storage = [];

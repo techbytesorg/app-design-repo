@@ -13,9 +13,6 @@ class MainTabControllerView extends StatelessWidget {
       home: DefaultTabController(
         length: 2,
         child: Scaffold(
-          appBar: AppBar(
-            title: Text("Notes"),
-          ),
           bottomNavigationBar: TabBar(
             unselectedLabelColor: Colors.blue,
             labelColor: Colors.blueAccent,
