@@ -23,7 +23,11 @@ class _NotesListViewState extends State<NotesListView> {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => NewNoteView()),
-              );
+              ).then((value) {
+                setState(() {
+                  // sets the state
+                });
+              });
             },
           ),
         ],
@@ -32,23 +36,37 @@ class _NotesListViewState extends State<NotesListView> {
         shrinkWrap: true,
         itemCount: notes_storage.length,
         itemBuilder: (BuildContext context, int index) {
-          return Card(
-            child: ListTile(
-              title: Text(
-                "${notes_storage[index].title}",
-                style: TextStyle(
-                  fontSize: 17,
-                  fontWeight: FontWeight.bold,
+          return Dismissible(
+            key: Key(notes_storage[index].title),
+            onDismissed: (direction) {
+              setState(() {
+                notes_storage.removeAt(index);
+              });
+
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                    content: Text("${notes_storage[index].title} deleted")),
+              );
+            },
+            background: ColoredBox(color: Colors.red),
+            child: Card(
+              child: ListTile(
+                title: Text(
+                  "${notes_storage[index].title}",
+                  style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
+                subtitle: Text("${notes_storage[index].lastEdit.toString()}"),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => NoteDetailsView(index)),
+                  );
+                },
               ),
-              subtitle: Text("${notes_storage[index].lastEdit.toString()}"),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => NoteDetailsView(index)),
-                );
-              },
             ),
           );
         },
